@@ -339,39 +339,17 @@ body {
 
 .avatar-wrapper {
     position: relative;
-    width: 400px;
-    height: 400px;
+    width: 300px;
+    height: 300px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.avatar-wrapper::before {
-    content: '';
-    position: absolute;
-    width: 120%;
-    height: 120%;
-    background-image: 
-        radial-gradient(circle at 20% 50%, rgba(255, 20, 147, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 80% 80%, rgba(255, 255, 0, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 40% 80%, rgba(0, 255, 255, 0.1) 0%, transparent 50%);
-    animation: backgroundShift 20s ease-in-out infinite;
-    z-index: -2;
-}
-
-@keyframes backgroundShift {
-    0%, 100% {
-        transform: rotate(0deg) scale(1);
-    }
-    50% {
-        transform: rotate(180deg) scale(1.1);
-    }
-}
-
 .avatar-container {
     position: relative;
-    width: 200px;
-    height: 200px;
+    width: 120px;
+    height: 120px;
     z-index: 10;
 }
 
@@ -379,20 +357,26 @@ body {
     width: 100%;
     height: 100%;
     border-radius: 50%;
-    border: 3px solid var(--primary-color);
-    box-shadow: 0 0 30px rgba(0, 255, 255, 0.5), 0 0 60px rgba(255, 20, 147, 0.3);
+    border: 2px solid var(--primary-color);
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.5), 0 0 40px rgba(255, 20, 147, 0.3);
     animation: float 6s ease-in-out infinite;
+    transition: all 0.3s ease;
+}
+
+.github-avatar:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(0, 255, 255, 0.7), 0 0 50px rgba(255, 20, 147, 0.5);
 }
 
 .avatar-glow {
     position: absolute;
-    top: -15px;
-    left: -15px;
-    right: -15px;
-    bottom: -15px;
-    background: radial-gradient(circle, rgba(255, 20, 147, 0.4) 0%, rgba(255, 255, 0, 0.2) 50%, transparent 70%);
+    top: -20px;
+    left: -20px;
+    right: -20px;
+    bottom: -20px;
+    background: radial-gradient(circle, rgba(0, 255, 255, 0.3) 0%, rgba(255, 20, 147, 0.2) 40%, transparent 70%);
     border-radius: 50%;
-    animation: pulse 2s ease-in-out infinite;
+    animation: pulse 3s ease-in-out infinite;
     z-index: -1;
 }
 
@@ -418,16 +402,52 @@ body {
 .floating-tag {
     position: absolute;
     font-family: 'Space Grotesk', monospace;
-    font-size: 0.85rem;
+    font-size: 0.75rem;
     color: var(--primary-color);
-    opacity: 0.8;
-    animation: orbit var(--duration, 20s) linear infinite;
-    animation-delay: var(--delay, 0s);
+    opacity: 0.7;
     font-weight: 500;
-    left: 50%;
-    top: 50%;
-    transform-origin: center;
-    white-space: nowrap;
+    padding: 0.5rem 1rem;
+    background: rgba(0, 255, 255, 0.1);
+    border: 1px solid rgba(0, 255, 255, 0.3);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    animation: floatTag var(--duration, 8s) ease-in-out infinite;
+    animation-delay: var(--delay, 0s);
+}
+
+.floating-tag:nth-child(1) {
+    top: 10%;
+    left: -50px;
+}
+
+.floating-tag:nth-child(2) {
+    top: 30%;
+    right: -40px;
+}
+
+.floating-tag:nth-child(3) {
+    bottom: 30%;
+    left: -60px;
+}
+
+.floating-tag:nth-child(4) {
+    bottom: 10%;
+    right: -50px;
+}
+
+@keyframes floatTag {
+    0%, 100% {
+        transform: translateY(0) translateX(0);
+    }
+    25% {
+        transform: translateY(-10px) translateX(10px);
+    }
+    50% {
+        transform: translateY(5px) translateX(-5px);
+    }
+    75% {
+        transform: translateY(-5px) translateX(-10px);
+    }
 }
 
 .tag-bracket {
@@ -435,45 +455,135 @@ body {
     font-weight: 700;
 }
 
-@keyframes orbit {
-    from {
-        transform: translate(-50%, -50%) rotate(0deg) translateX(150px) rotate(0deg);
-    }
-    to {
-        transform: translate(-50%, -50%) rotate(360deg) translateX(150px) rotate(-360deg);
-    }
-}
-
-/* Orbit Rings */
-.orbit-ring {
+/* Code Cards */
+.code-cards {
     position: absolute;
-    width: 300px;
-    height: 300px;
-    border: 1px solid rgba(0, 255, 255, 0.1);
-    border-radius: 50%;
-    animation: rotate var(--rotation-duration, 20s) linear infinite;
-    transform: scale(var(--scale, 1));
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
 }
 
-.orbit-ring::before {
-    content: '';
+.code-card {
     position: absolute;
-    width: 6px;
-    height: 6px;
-    background: var(--primary-color);
-    border-radius: 50%;
-    top: -3px;
-    left: 50%;
-    transform: translateX(-50%);
-    box-shadow: 0 0 10px var(--primary-color);
+    background: rgba(26, 26, 26, 0.8);
+    border: 1px solid var(--border-color);
+    padding: 1rem;
+    border-radius: 8px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.75rem;
+    backdrop-filter: blur(10px);
+    opacity: 0.6;
+    animation: floatCode var(--duration, 10s) ease-in-out infinite;
+    animation-delay: var(--delay, 0s);
 }
 
-@keyframes rotate {
-    from {
-        transform: rotate(0deg) scale(var(--scale, 1));
+[data-theme="light"] .code-card {
+    background: rgba(245, 245, 245, 0.9);
+}
+
+.code-card:nth-child(1) {
+    top: 20%;
+    left: -120px;
+    transform: rotate(-5deg);
+}
+
+.code-card:nth-child(2) {
+    bottom: 20%;
+    right: -100px;
+    transform: rotate(3deg);
+}
+
+@keyframes floatCode {
+    0%, 100% {
+        transform: translateY(0) rotate(var(--rotate, 0deg));
     }
-    to {
-        transform: rotate(360deg) scale(var(--scale, 1));
+    50% {
+        transform: translateY(-15px) rotate(calc(var(--rotate, 0deg) + 2deg));
+    }
+}
+
+/* Geometric Shapes */
+.geometric-shapes {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.shape {
+    position: absolute;
+    opacity: 0.1;
+    animation: shapeFloat var(--duration, 15s) ease-in-out infinite;
+    animation-delay: var(--delay, 0s);
+}
+
+.shape-triangle {
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 35px solid var(--primary-color);
+    top: 15%;
+    right: 10%;
+    transform: rotate(15deg);
+}
+
+.shape-square {
+    width: 30px;
+    height: 30px;
+    border: 2px solid var(--pink-color);
+    bottom: 25%;
+    left: 8%;
+    transform: rotate(45deg);
+}
+
+.shape-circle {
+    width: 25px;
+    height: 25px;
+    border: 2px solid var(--yellow-color);
+    border-radius: 50%;
+    top: 60%;
+    right: 15%;
+}
+
+.shape-hexagon {
+    width: 40px;
+    height: 22px;
+    background: var(--accent-color);
+    position: relative;
+    bottom: 15%;
+    right: 20%;
+    opacity: 0.08;
+}
+
+.shape-hexagon:before,
+.shape-hexagon:after {
+    content: "";
+    position: absolute;
+    width: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+}
+
+.shape-hexagon:before {
+    bottom: 100%;
+    border-bottom: 11px solid var(--accent-color);
+}
+
+.shape-hexagon:after {
+    top: 100%;
+    border-top: 11px solid var(--accent-color);
+}
+
+@keyframes shapeFloat {
+    0%, 100% {
+        transform: translateY(0) rotate(var(--rotate, 0deg));
+    }
+    33% {
+        transform: translateY(-20px) rotate(calc(var(--rotate, 0deg) + 120deg));
+    }
+    66% {
+        transform: translateY(10px) rotate(calc(var(--rotate, 0deg) + 240deg));
     }
 }
 
@@ -487,45 +597,60 @@ body {
 
 .particle {
     position: absolute;
-    width: 4px;
-    height: 4px;
-    background: var(--yellow-color);
+    width: 2px;
+    height: 2px;
+    background: var(--primary-color);
     border-radius: 50%;
-    left: var(--x);
-    top: var(--y);
-    animation: particle-float 8s ease-in-out infinite;
-    box-shadow: 0 0 6px var(--yellow-color);
+    opacity: 0.6;
+    animation: particleDrift var(--duration, 20s) linear infinite;
+    animation-delay: var(--delay, 0s);
 }
 
-.particle:nth-child(even) {
+.particle:nth-child(odd) {
     background: var(--pink-color);
-    box-shadow: 0 0 6px var(--pink-color);
-    animation-duration: 10s;
 }
 
-@keyframes particle-float {
-    0%, 100% {
-        transform: translateY(0) scale(1);
-        opacity: 0.5;
+@keyframes particleDrift {
+    0% {
+        transform: translate(0, 100vh) scale(0);
+        opacity: 0;
     }
-    50% {
-        transform: translateY(-30px) scale(1.5);
-        opacity: 1;
+    10% {
+        opacity: 0.6;
+    }
+    90% {
+        opacity: 0.6;
+    }
+    100% {
+        transform: translate(var(--drift-x, 100px), -100vh) scale(1);
+        opacity: 0;
     }
 }
 
-.floating-code {
-    display: none;
-    background: rgba(26, 26, 26, 0.8);
-    border: 1px solid var(--border-color);
-    padding: 2rem;
-    border-radius: 8px;
+/* Binary Rain Effect */
+.binary-rain {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    opacity: 0.05;
+}
+
+.binary-column {
+    position: absolute;
+    top: -100%;
     font-family: 'Courier New', monospace;
-    animation: float 6s ease-in-out infinite;
+    font-size: 14px;
+    color: var(--accent-color);
+    animation: binaryFall var(--duration, 15s) linear infinite;
+    animation-delay: var(--delay, 0s);
 }
 
-[data-theme="light"] .floating-code {
-    background: rgba(245, 245, 245, 0.9);
+@keyframes binaryFall {
+    to {
+        transform: translateY(200vh);
+    }
 }
 
 @keyframes float {
@@ -539,8 +664,9 @@ body {
 
 .code-line {
     display: block;
-    margin: 0.5rem 0;
+    margin: 0.25rem 0;
     color: var(--text-secondary);
+    white-space: nowrap;
 }
 
 .string {
@@ -858,36 +984,46 @@ section {
     }
     
     .avatar-wrapper {
-        width: 300px;
-        height: 300px;
+        width: 250px;
+        height: 250px;
     }
     
     .avatar-container {
-        width: 150px;
-        height: 150px;
+        width: 100px;
+        height: 100px;
     }
     
     .floating-tag {
-        font-size: 0.75rem;
+        font-size: 0.7rem;
+        padding: 0.4rem 0.8rem;
     }
     
-    .orbit-ring {
-        width: 220px;
-        height: 220px;
+    .floating-tag:nth-child(1) {
+        top: 5%;
+        left: -30px;
     }
     
-    @keyframes orbit {
-        from {
-            transform: translate(-50%, -50%) rotate(0deg) translateX(110px) rotate(0deg);
-        }
-        to {
-            transform: translate(-50%, -50%) rotate(360deg) translateX(110px) rotate(-360deg);
-        }
+    .floating-tag:nth-child(2) {
+        top: 25%;
+        right: -30px;
     }
     
-    .floating-code {
-        font-size: 0.875rem;
-        padding: 1rem;
+    .floating-tag:nth-child(3) {
+        bottom: 25%;
+        left: -40px;
+    }
+    
+    .floating-tag:nth-child(4) {
+        bottom: 5%;
+        right: -30px;
+    }
+    
+    .code-card {
+        display: none;
+    }
+    
+    .geometric-shapes {
+        display: none;
     }
     
     .section-title {
