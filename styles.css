@@ -12,6 +12,20 @@
     --border-color: #333;
 }
 
+[data-theme="light"] {
+    --primary-color: #0088cc;
+    --secondary-color: #cc00cc;
+    --accent-color: #00aa00;
+    --pink-color: #d1006c;
+    --yellow-color: #ccaa00;
+    --red-color: #cc0033;
+    --bg-color: #ffffff;
+    --surface-color: #f5f5f5;
+    --text-color: #1a1a1a;
+    --text-secondary: #666666;
+    --border-color: #e0e0e0;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -46,6 +60,12 @@ body {
     z-index: 1;
 }
 
+[data-theme="light"] .cyber-grid {
+    background-image: 
+        linear-gradient(rgba(0, 136, 204, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(209, 0, 108, 0.03) 1px, transparent 1px);
+}
+
 .noise {
     position: fixed;
     top: 0;
@@ -58,6 +78,10 @@ body {
     background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIj48ZmVUdXJidWxlbmNlIGJhc2VGcmVxdWVuY3k9Ii43NSIgbnVtT2N0YXZlcz0iMTAiLz48ZmVDb2xvck1hdHJpeCB2YWx1ZXM9IjAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDEgMCIvPjwvZmlsdGVyPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbHRlcj0idXJsKCNhKSIgb3BhY2l0eT0iMSIvPjwvc3ZnPg==');
 }
 
+[data-theme="light"] .noise {
+    opacity: 0.01;
+}
+
 /* Navigation */
 .navbar {
     position: fixed;
@@ -68,6 +92,10 @@ body {
     border-bottom: 1px solid var(--border-color);
     z-index: 1000;
     padding: 1rem 0;
+}
+
+[data-theme="light"] .navbar {
+    background: rgba(255, 255, 255, 0.9);
 }
 
 .nav-container {
@@ -121,6 +149,37 @@ body {
 
 .nav-link:hover::after {
     width: 100%;
+}
+
+/* Theme Toggle */
+.theme-toggle {
+    background: none;
+    border: 2px solid var(--text-color);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    margin-left: 1rem;
+}
+
+.theme-toggle:hover {
+    border-color: var(--primary-color);
+    transform: rotate(180deg);
+}
+
+.theme-toggle svg {
+    width: 20px;
+    height: 20px;
+    fill: var(--text-color);
+    transition: fill 0.3s ease;
+}
+
+.theme-toggle:hover svg {
+    fill: var(--primary-color);
 }
 
 /* Hero Section */
@@ -465,6 +524,10 @@ body {
     animation: float 6s ease-in-out infinite;
 }
 
+[data-theme="light"] .floating-code {
+    background: rgba(245, 245, 245, 0.9);
+}
+
 @keyframes float {
     0%, 100% {
         transform: translateY(0px);
@@ -531,6 +594,11 @@ section {
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
+}
+
+[data-theme="light"] .project-card {
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
 .project-card::before {
@@ -662,6 +730,11 @@ section {
     transition: all 0.3s ease;
 }
 
+[data-theme="light"] .stat-card {
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
 .stat-card:hover {
     border-color: var(--pink-color);
     box-shadow: 0 0 20px rgba(255, 20, 147, 0.4), 0 0 40px rgba(255, 255, 0, 0.2);
@@ -738,6 +811,17 @@ section {
     .nav-links {
         gap: 1rem;
         font-size: 0.9rem;
+    }
+    
+    .theme-toggle {
+        width: 36px;
+        height: 36px;
+        margin-left: 0.5rem;
+    }
+    
+    .theme-toggle svg {
+        width: 18px;
+        height: 18px;
     }
     
     section {
