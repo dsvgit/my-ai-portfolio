@@ -1,6 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
   <rect width="32" height="32" fill="#0d0221"/>
-  <path d="M8 8 L8 24 L12 24 L12 20 L16 20 L20 24 L24 24 L20 20 C22 20 24 18 24 16 L24 12 C24 10 22 8 20 8 Z M12 12 L20 12 L20 16 L12 16 Z" fill="#00d9ff"/>
-  <path d="M8 8 L8 24 L12 24 L12 20 L16 20 L20 24 L24 24 L20 20 C22 20 24 18 24 16 L24 12 C24 10 22 8 20 8 Z M12 12 L20 12 L20 16 L12 16 Z" fill="#7b2ff7" opacity="0.5" transform="translate(1, 1)"/>
-  <rect x="6" y="6" width="20" height="20" fill="none" stroke="#f72585" stroke-width="0.5" opacity="0.8"/>
+  <defs>
+    <linearGradient id="textGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00d9ff;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#7b2ff7;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f72585;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <text x="16" y="21" font-family="Arial, sans-serif" font-size="11" font-weight="bold" text-anchor="middle" fill="url(#textGradient)">DSV</text>
+  <text x="16.5" y="21.5" font-family="Arial, sans-serif" font-size="11" font-weight="bold" text-anchor="middle" fill="#7b2ff7" opacity="0.3">DSV</text>
+  <rect x="2" y="2" width="28" height="28" fill="none" stroke="#f72585" stroke-width="0.5" opacity="0.6" rx="2"/>
 </svg>
