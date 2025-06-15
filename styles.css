@@ -132,11 +132,12 @@ body {
     padding: 0 5%;
     position: relative;
     z-index: 10;
+    gap: 3rem;
 }
 
 .hero-content {
-    flex: 1;
-    max-width: 600px;
+    flex: 1.2;
+    max-width: 650px;
 }
 
 .glitch {
@@ -274,21 +275,44 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
 }
 
 .avatar-wrapper {
     position: relative;
-    width: 500px;
-    height: 500px;
+    width: 400px;
+    height: 400px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
+.avatar-wrapper::before {
+    content: '';
+    position: absolute;
+    width: 120%;
+    height: 120%;
+    background-image: 
+        radial-gradient(circle at 20% 50%, rgba(255, 20, 147, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(255, 255, 0, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 40% 80%, rgba(0, 255, 255, 0.1) 0%, transparent 50%);
+    animation: backgroundShift 20s ease-in-out infinite;
+    z-index: -2;
+}
+
+@keyframes backgroundShift {
+    0%, 100% {
+        transform: rotate(0deg) scale(1);
+    }
+    50% {
+        transform: rotate(180deg) scale(1.1);
+    }
+}
+
 .avatar-container {
     position: relative;
-    width: 300px;
-    height: 300px;
+    width: 200px;
+    height: 200px;
     z-index: 10;
 }
 
@@ -303,10 +327,10 @@ body {
 
 .avatar-glow {
     position: absolute;
-    top: -20px;
-    left: -20px;
-    right: -20px;
-    bottom: -20px;
+    top: -15px;
+    left: -15px;
+    right: -15px;
+    bottom: -15px;
     background: radial-gradient(circle, rgba(255, 20, 147, 0.4) 0%, rgba(255, 255, 0, 0.2) 50%, transparent 70%);
     border-radius: 50%;
     animation: pulse 2s ease-in-out infinite;
@@ -335,11 +359,12 @@ body {
 .floating-tag {
     position: absolute;
     font-family: 'Space Grotesk', monospace;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     color: var(--primary-color);
-    opacity: 0.7;
+    opacity: 0.8;
     animation: orbit var(--duration, 20s) linear infinite;
     animation-delay: var(--delay, 0s);
+    font-weight: 500;
 }
 
 .tag-bracket {
@@ -349,18 +374,18 @@ body {
 
 @keyframes orbit {
     from {
-        transform: rotate(0deg) translateX(200px) rotate(0deg);
+        transform: rotate(0deg) translateX(150px) rotate(0deg);
     }
     to {
-        transform: rotate(360deg) translateX(200px) rotate(-360deg);
+        transform: rotate(360deg) translateX(150px) rotate(-360deg);
     }
 }
 
 /* Orbit Rings */
 .orbit-ring {
     position: absolute;
-    width: 400px;
-    height: 400px;
+    width: 300px;
+    height: 300px;
     border: 1px solid rgba(0, 255, 255, 0.1);
     border-radius: 50%;
     animation: rotate var(--rotation-duration, 20s) linear infinite;
@@ -727,13 +752,13 @@ section {
     }
     
     .avatar-wrapper {
-        width: 350px;
-        height: 350px;
+        width: 300px;
+        height: 300px;
     }
     
     .avatar-container {
-        width: 200px;
-        height: 200px;
+        width: 150px;
+        height: 150px;
     }
     
     .floating-tag {
@@ -741,16 +766,16 @@ section {
     }
     
     .orbit-ring {
-        width: 280px;
-        height: 280px;
+        width: 220px;
+        height: 220px;
     }
     
     @keyframes orbit {
         from {
-            transform: rotate(0deg) translateX(140px) rotate(0deg);
+            transform: rotate(0deg) translateX(110px) rotate(0deg);
         }
         to {
-            transform: rotate(360deg) translateX(140px) rotate(-360deg);
+            transform: rotate(360deg) translateX(110px) rotate(-360deg);
         }
     }
     
