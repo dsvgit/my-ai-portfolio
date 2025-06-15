@@ -365,6 +365,10 @@ body {
     animation: orbit var(--duration, 20s) linear infinite;
     animation-delay: var(--delay, 0s);
     font-weight: 500;
+    left: 50%;
+    top: 50%;
+    transform-origin: center;
+    white-space: nowrap;
 }
 
 .tag-bracket {
@@ -374,10 +378,10 @@ body {
 
 @keyframes orbit {
     from {
-        transform: rotate(0deg) translateX(150px) rotate(0deg);
+        transform: translate(-50%, -50%) rotate(0deg) translateX(150px) rotate(0deg);
     }
     to {
-        transform: rotate(360deg) translateX(150px) rotate(-360deg);
+        transform: translate(-50%, -50%) rotate(360deg) translateX(150px) rotate(-360deg);
     }
 }
 
@@ -772,10 +776,10 @@ section {
     
     @keyframes orbit {
         from {
-            transform: rotate(0deg) translateX(110px) rotate(0deg);
+            transform: translate(-50%, -50%) rotate(0deg) translateX(110px) rotate(0deg);
         }
         to {
-            transform: rotate(360deg) translateX(110px) rotate(-360deg);
+            transform: translate(-50%, -50%) rotate(360deg) translateX(110px) rotate(-360deg);
         }
     }
     
