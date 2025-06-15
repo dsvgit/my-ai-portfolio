@@ -551,23 +551,34 @@ section {
         font-size: 0.9rem;
     }
     
+    section {
+        padding: 3rem 0;
+    }
+    
     .hero {
         flex-direction: column;
         text-align: center;
         padding: 5rem 2rem;
+        min-height: auto;
     }
     
     .hero-visual {
-        margin-top: 3rem;
+        margin-top: 2rem;
     }
     
     .floating-code {
         font-size: 0.875rem;
-        padding: 1.5rem;
+        padding: 1rem;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+        margin-bottom: 2rem;
     }
     
     .about-content {
         grid-template-columns: 1fr;
+        gap: 2rem;
     }
     
     .stats-container {
@@ -576,6 +587,11 @@ section {
     
     .projects-grid {
         grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .project-card {
+        padding: 1.5rem;
     }
     
     .contact-links {
